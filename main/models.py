@@ -25,6 +25,7 @@ class PortfolioContent(models.Model):
         Portfolio,
         on_delete=models.SET_NULL,
         null=True,
+        related_name="contents"
     )
     title = models.CharField(
         max_length=200,
@@ -35,11 +36,12 @@ class PortfolioContent(models.Model):
         return self.title
 
 
-class PortfolioImages(models.Model):
+class PortfolioImage(models.Model):
     portfolio = models.ForeignKey(
         Portfolio,
         on_delete=models.SET_NULL,
         null=True,
+        related_name="images"
     )
     title = models.CharField(
         max_length=200,
