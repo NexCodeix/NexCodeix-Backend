@@ -1,11 +1,14 @@
 import os
 from pathlib import Path
+from environ import Env
+
+env = Env().read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-mu4rp!s&7qdicb*cw9u%u((p+ee5ik$8d+v6v=tjc=b-@yq-db'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = True
+DEBUG = os.environ.get("DEBUG") == "True"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -84,5 +87,9 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+STATIC_ROOT = "static_root"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
