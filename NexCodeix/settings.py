@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 from pathlib import Path
 from environ import Env
 
@@ -9,8 +10,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = os.environ.get("DEBUG") == "True"
+DEVELOPMENT_MODE = os.environ.get("DEVELOPMENT_MODE") == "True"
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app", ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -77,6 +79,32 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+POSTGRES_URL = os.environ.get('POSTGRES_URL', None)
+
+if DEVELOPMENT_MODE:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    if POSTGRES_URL is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+        
+    DATABASES = {
+        'default': dj_database_url.parse(POSTGRES_URL),
+    }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
+
 
 LANGUAGE_CODE = 'en-us'
 
