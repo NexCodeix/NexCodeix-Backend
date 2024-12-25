@@ -12,7 +12,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG") == "True"
 DEVELOPMENT_MODE = os.environ.get("DEVELOPMENT_MODE") == "True"
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app", ]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app", ".now.sh"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -119,5 +119,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 STATIC_ROOT = "static_root"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
