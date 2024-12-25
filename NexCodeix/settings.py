@@ -80,7 +80,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-POSTGRES_URL = os.environ.get('POSTGRES_URL', None)
+POSTGRES_URL = os.environ.get('POSTGRES_DB_URL', None)
 
 if DEVELOPMENT_MODE:
     DATABASES = {
