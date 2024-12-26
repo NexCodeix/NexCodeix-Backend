@@ -1,5 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from .serializers import PortfolioDetailSerializer, PortfolioSerializer
+from ..models import Portfolio
 
 
 class PortfolioModelViewSet(ModelViewSet):

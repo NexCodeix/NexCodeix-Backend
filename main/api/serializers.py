@@ -2,13 +2,6 @@ from ..models import Portfolio, PortfolioContent, PortfolioImage
 from rest_framework import serializers
 
 
-class PortfolioSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Portfolio
-        fields = "__all__"
-
-
 class PortfolioContentSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -23,12 +16,26 @@ class PortfolioImageSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class PortfolioSerializer(serializers.ModelSerializer):
+    images = PortfolioImageSerializer(
+        read_only=True,
+        many=True,
+    )
+
+    class Meta:
+        model = Portfolio
+        fields = "__all__"
+
+
 class PortfolioDetailSerializer(serializers.ModelSerializer):
     contents = PortfolioContentSerializer(
         read_only=True,
+        many=True,
+
     )
     images = PortfolioImageSerializer(
-        read_only=True
+        read_only=True,
+        many=True,
     )
 
     class Meta:

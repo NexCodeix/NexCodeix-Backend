@@ -9,6 +9,22 @@ class Portfolio(models.Model):
     profile_image = models.ImageField(
         upload_to="portfolio/profile_image/"
     )
+    left_bg = models.CharField(
+        max_length=100,
+        default="bg-blue-400"
+    )
+    right_bg = models.CharField(
+        max_length=100,
+        default="bg-blue-300"
+    )
+    text_color = models.CharField(
+        max_length=100,
+        default="white"
+    )
+    backgroud_color = models.CharField(
+        max_length=100,
+        default="bg-blue-200"
+    )
     date_created = models.DateTimeField(
         auto_now_add=True,
     )
