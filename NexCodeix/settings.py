@@ -82,20 +82,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 POSTGRES_URL = os.environ.get('POSTGRES_DB_URL', None)
 
-if DEVELOPMENT_MODE:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    if POSTGRES_URL is None:
-        raise Exception("DATABASE_URL environment variable not defined")
-        
-    DATABASES = {
-        'default': dj_database_url.parse(POSTGRES_URL),
-    }
+
+if POSTGRES_URL is None:
+    raise Exception("DATABASE_URL environment variable not defined")
+    
+DATABASES = {
+    'default': dj_database_url.parse(POSTGRES_URL),
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
