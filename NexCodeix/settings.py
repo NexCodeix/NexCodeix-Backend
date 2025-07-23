@@ -83,12 +83,12 @@ AUTH_PASSWORD_VALIDATORS = [
 POSTGRES_URL = os.environ.get('POSTGRES_DB_URL', None)
 
 
-if POSTGRES_URL is None:
-    raise Exception("DATABASE_URL environment variable not defined")
+# if POSTGRES_URL is None:
+#     raise Exception("DATABASE_URL environment variable not defined")
     
-DATABASES = {
-    'default': dj_database_url.parse(POSTGRES_URL),
-}
+# DATABASES = {
+#     'default': dj_database_url.parse(POSTGRES_URL),
+# }
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
