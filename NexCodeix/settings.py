@@ -86,7 +86,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-POSTGRES_URL = os.environ.get('POSTGRES_URL', None)
+POSTGRES_URL = os.environ.get('NEON_POSTGRES_URL', None)
 
 
 if POSTGRES_URL is None:
