@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'main.apps.MainConfig',
+    'portfolio.apps.PortfolioConfig',
 
     'rest_framework',
     'rest_framework.authtoken',
