@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'portfolio.apps.PortfolioConfig',
     'main.apps.MainConfig',
 
@@ -69,13 +68,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'NexCodeix.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -93,10 +85,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 POSTGRES_URL = os.environ.get('NEON_POSTGRES_URL', None)
 
-
 if POSTGRES_URL is None:
     raise Exception("DATABASE_URL environment variable not defined")
-    
+
 DATABASES = {
     'default': dj_database_url.parse(POSTGRES_URL),
 }
