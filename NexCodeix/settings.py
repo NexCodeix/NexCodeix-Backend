@@ -26,10 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'portfolio.apps.PortfolioConfig',
     'main.apps.MainConfig',
-
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -63,13 +61,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'NexCodeix.wsgi.application'
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
