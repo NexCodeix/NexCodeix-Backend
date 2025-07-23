@@ -79,10 +79,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 POSTGRES_URL = os.environ.get('NEON_POSTGRES_URL', None)
 
-
 if POSTGRES_URL is None:
     raise Exception("DATABASE_URL environment variable not defined")
-    
+
 DATABASES = {
     'default': dj_database_url.parse(POSTGRES_URL),
 }
